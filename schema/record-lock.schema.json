@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hr185882-creator/record-lock/schema/record-lock.schema.json",
+  "title": "RECORD LOCK sanitized record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "notice", "record_id", "version", "decision_question", "horizon", "sources", "claims", "hypotheses", "constraints", "assessment", "revision_conditions", "review"],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "notice": {"type": "string", "minLength": 30},
+    "record_id": {"type": "string", "pattern": "^RL-[A-Z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "decision_question": {"type": "string", "minLength": 15},
+    "horizon": {"type": ["string", "null"], "format": "date"},
+    "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}},
+    "claims": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claim"}},
+    "hypotheses": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/hypothesis"}},
+    "constraints": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/constraint"}},
+    "assessment": {"$ref": "#/$defs/assessment"},
+    "revision_conditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 10}},
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewer", "approved_at"],
+      "properties": {
+        "status": {"type": "string", "enum": ["approved_example", "approved", "withheld", "rejected"]},
+        "reviewer": {"type": "string", "minLength": 3},
+        "approved_at": {"type": "string", "format": "date"}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "title", "issuer_or_author", "published_at", "accessed_at", "source_class", "url_or_locator", "independence_group", "integrity_notes", "rights_or_handling"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 3},
+        "title": {"type": "string", "minLength": 3},
+        "issuer_or_author": {"type": "string", "minLength": 2},
+        "published_at": {"type": "string", "format": "date"},
+        "accessed_at": {"type": "string", "format": "date"},
+        "source_class": {"type": "string", "minLength": 3},
+        "url_or_locator": {"type": "string", "minLength": 3},
+        "independence_group": {"type": "string", "minLength": 3},
+        "integrity_notes": {"type": "string", "minLength": 5},
+        "rights_or_handling": {"type": "string", "minLength": 3}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "text", "type", "state", "source_ids", "contradictions", "assumptions", "evidence_ceiling", "independence_notes", "privacy_status"],
+      "properties": {
+        "claim_id": {"type": "string", "pattern": "^CLM-[A-Z0-9-]+$"},
+        "text": {"type": "string", "minLength": 10},
+        "type": {"type": "string", "enum": ["fact", "inference", "forecast", "speculation", "unverified_claim"]},
+        "state": {"type": "string", "enum": ["supported", "plausible", "not_proven", "contradicted", "verified"]},
+        "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "contradictions": {"type": "array", "items": {"type": "string"}},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "evidence_ceiling": {"type": "string", "minLength": 20},
+        "independence_notes": {"type": "string", "minLength": 10},
+        "privacy_status": {"type": "string", "enum": ["public", "restricted", "withhold", "not_applicable"]}
+      }
+    },
+    "hypothesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hypothesis_id", "statement", "supporting_claim_ids", "contradicting_claim_ids", "discriminating_indicators", "status"],
+      "properties": {
+        "hypothesis_id": {"type": "string", "minLength": 2},
+        "statement": {"type": "string", "minLength": 10},
+        "supporting_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "contradicting_claim_ids": {"type": "array", "items": {"type": "string"}},
+        "discriminating_indicators": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "status": {"type": "string", "minLength": 3}
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constraint_id", "description", "gate_state", "activation_trigger", "blocking_condition"],
+      "properties": {
+        "constraint_id": {"type": "string", "minLength": 3},
+        "description": {"type": "string", "minLength": 10},
+        "gate_state": {"type": "string", "enum": ["blocked", "latent", "forming", "credible_pathway", "trigger_ready", "activated"]},
+        "activation_trigger": {"type": "string", "minLength": 5},
+        "blocking_condition": {"type": "string", "minLength": 5}
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["judgment", "confidence", "confidence_basis", "strongest_counterargument", "falsifier", "action_state", "action_rationale"],
+      "properties": {
+        "judgment": {"type": "string", "minLength": 15},
+        "confidence": {"type": "string", "enum": ["directional", "high_confidence", "verified"]},
+        "confidence_basis": {"type": "string", "minLength": 15},
+        "strongest_counterargument": {"type": "string", "minLength": 15},
+        "falsifier": {"type": "string", "minLength": 10},
+        "action_state": {"type": "string", "enum": ["monitor", "wait", "reject", "investigate", "hedge", "trade", "publish", "escalate", "prepare"]},
+        "action_rationale": {"type": "string", "minLength": 15}
+      }
+    }
+  }
+}
