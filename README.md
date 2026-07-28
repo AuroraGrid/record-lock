@@ -1,12 +1,27 @@
 # RECORD LOCK — Sanitized Public Reference
 
 [![Quality checks](https://github.com/hr185882-creator/record-lock/actions/workflows/quality.yml/badge.svg)](https://github.com/hr185882-creator/record-lock/actions/workflows/quality.yml)
+[![Live product smoke test](https://github.com/hr185882-creator/record-lock/actions/workflows/live-smoke.yml/badge.svg)](https://github.com/hr185882-creator/record-lock/actions/workflows/live-smoke.yml)
 
 A public-safe reference architecture for converting source collections into auditable analytical records with explicit provenance, claim states, competing hypotheses, confidence labels, falsifiers, and revision conditions.
 
 - Live product: https://record-lock-platform.vercel.app/
+- Version: `1.1.0`
 - Portfolio: https://github.com/hr185882-creator
 - Creator: Hasan Raza Kazmi
+
+## Verified package scope
+
+- 1 formal Draft 2020-12 JSON Schema
+- 3 fictional atomic claims
+- 2 fictional source records
+- 2 competing hypotheses
+- 1 binding constraint object
+- 1 executable domain-validation suite
+- 1 scheduled production smoke test
+- 2 automated GitHub workflows
+
+These counts describe the public-safe reference package, not the production corpus.
 
 ## Why this repository exists
 
@@ -29,13 +44,17 @@ A RECORD LOCK entry should allow another reviewer to answer:
 
 ## Repository map
 
+- `schema/record-lock.schema.json` — machine-enforced record schema
+- `tests/validate_repository.py` — domain, reference-integrity, and publication-control tests
 - `docs/ARCHITECTURE.md` — analytical pipeline and release controls
 - `docs/CLAIM_SCHEMA.md` — field definitions and validation requirements
 - `data/example-record-lock.json` — fictional public-safe example record
-- `.github/workflows/quality.yml` — deterministic validation
+- `.github/workflows/quality.yml` — schema, domain, and link validation
+- `.github/workflows/live-smoke.yml` — scheduled production-endpoint verification
 - `.github/workflows/dependency-review.yml` — high-severity dependency review
 - `SECURITY.md` — responsible disclosure policy
 - `CHANGELOG.md` — material release history
+- `RELEASE_NOTES.md` — release-ready version notes
 - `CITATION.cff` — citation metadata
 
 ## Analytical labels
