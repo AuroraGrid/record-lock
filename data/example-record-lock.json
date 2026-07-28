@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "notice": "This file contains a fictional scenario created solely to demonstrate the RECORD LOCK schema.",
+  "record_id": "RL-DEMO-0001",
+  "version": "1.0.0",
+  "decision_question": "Will the fictional Example Transit Authority open the North Line before 2027-01-01?",
+  "horizon": "2027-01-01",
+  "sources": [
+    {
+      "source_id": "SRC-DEMO-A",
+      "title": "Example Authority Construction Update",
+      "issuer_or_author": "Example Transit Authority",
+      "published_at": "2026-06-30",
+      "accessed_at": "2026-07-28",
+      "source_class": "fictional_official_record",
+      "url_or_locator": "demo://authority-update",
+      "independence_group": "official-authority",
+      "integrity_notes": "Fictional primary-source example.",
+      "rights_or_handling": "public_example"
+    },
+    {
+      "source_id": "SRC-DEMO-B",
+      "title": "Example Independent Engineering Review",
+      "issuer_or_author": "Example Engineering Board",
+      "published_at": "2026-07-12",
+      "accessed_at": "2026-07-28",
+      "source_class": "fictional_independent_review",
+      "url_or_locator": "demo://engineering-review",
+      "independence_group": "independent-engineering",
+      "integrity_notes": "Fictional independent-review example.",
+      "rights_or_handling": "public_example"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "CLM-DEMO-001",
+      "text": "The authority reports that structural construction is complete.",
+      "type": "fact",
+      "state": "supported",
+      "source_ids": ["SRC-DEMO-A"],
+      "contradictions": [],
+      "assumptions": [],
+      "evidence_ceiling": "The official update supports completion of structural construction, not completion of testing or authorization to open.",
+      "independence_notes": "Single official source; not independently corroborated for all subcomponents.",
+      "privacy_status": "not_applicable"
+    },
+    {
+      "claim_id": "CLM-DEMO-002",
+      "text": "The independent engineering review identifies unresolved signaling tests.",
+      "type": "fact",
+      "state": "supported",
+      "source_ids": ["SRC-DEMO-B"],
+      "contradictions": [],
+      "assumptions": [],
+      "evidence_ceiling": "The review supports unresolved tests as of publication, not that they cannot be completed before the deadline.",
+      "independence_notes": "Independent from the authority update.",
+      "privacy_status": "not_applicable"
+    },
+    {
+      "claim_id": "CLM-DEMO-003",
+      "text": "Opening before 2027-01-01 is more likely than not if signaling certification begins by 2026-10-01.",
+      "type": "forecast",
+      "state": "plausible",
+      "source_ids": ["SRC-DEMO-A", "SRC-DEMO-B"],
+      "contradictions": ["Testing delays could consume the remaining schedule margin."],
+      "assumptions": ["No major procurement, safety, funding, or legal interruption occurs."],
+      "evidence_ceiling": "Conditional forecast rather than a verified schedule outcome.",
+      "independence_notes": "Uses one official source and one fictional independent review.",
+      "privacy_status": "not_applicable"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "The line opens before the deadline.",
+      "supporting_claim_ids": ["CLM-DEMO-001", "CLM-DEMO-003"],
+      "contradicting_claim_ids": ["CLM-DEMO-002"],
+      "discriminating_indicators": ["Certification begins by 2026-10-01", "No critical safety defect is recorded"],
+      "status": "preferred_conditional"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "Testing or certification delays push opening beyond the deadline.",
+      "supporting_claim_ids": ["CLM-DEMO-002"],
+      "contradicting_claim_ids": ["CLM-DEMO-001"],
+      "discriminating_indicators": ["Certification has not begun by 2026-10-01", "A critical signaling defect is recorded"],
+      "status": "credible_alternative"
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "CON-DEMO-001",
+      "description": "Regulatory signaling certification is required before passenger operations.",
+      "gate_state": "forming",
+      "activation_trigger": "Formal certification testing begins.",
+      "blocking_condition": "Certification remains incomplete at the operating deadline."
+    }
+  ],
+  "assessment": {
+    "judgment": "Opening before 2027-01-01 is plausible but depends on timely signaling certification.",
+    "confidence": "directional",
+    "confidence_basis": "Structural progress supports the schedule, but the binding certification constraint remains unresolved.",
+    "strongest_counterargument": "The remaining testing window may be insufficient if any critical defect is found.",
+    "falsifier": "Certification has not begun by 2026-10-01 or a critical defect requires redesign.",
+    "action_state": "monitor",
+    "action_rationale": "Track certification milestones rather than treating construction completion as operational readiness."
+  },
+  "revision_conditions": [
+    "Upgrade confidence if formal certification begins by 2026-10-01 with no critical defects.",
+    "Downgrade the forecast if certification slips beyond 2026-10-01 or redesign is required."
+  ],
+  "review": {
+    "status": "approved_example",
+    "reviewer": "Hasan Raza Kazmi",
+    "approved_at": "2026-07-28"
+  }
+}
