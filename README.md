@@ -19,7 +19,7 @@ A public-safe reference architecture for converting source collections into audi
 - 1 binding constraint object
 - 1 executable domain-validation suite
 - 1 scheduled production smoke test
-- 2 automated GitHub workflows
+- 3 automated GitHub workflows
 
 These counts describe the public-safe reference package, not the production corpus.
 
