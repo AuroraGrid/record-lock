@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RECORD LOCK — claim verification</title>
+  <meta name="description" content="Evidence-verification and controlled-publication architecture for traceable claims, counterarguments, and revision conditions." />
+  <style>
+    :root { color-scheme: dark; --bg:#0b1020; --card:#141a2e; --line:#2a3354; --text:#e8ecf7; --muted:#9aa6c8; --acc:#7eb6ff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, Segoe UI, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+    main { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+    .kicker { letter-spacing:.12em; text-transform:uppercase; font-size:12px; color:var(--acc); }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 8px 0 12px; }
+    p { color: var(--muted); }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin: 18px 0; }
+    ul { margin: 8px 0 0; padding-left: 1.15rem; color:var(--muted); }
+    a { color: var(--acc); }
+    .row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--line); text-decoration:none; color:var(--text); }
+    .btn.primary { background:#1b3a6b; border-color:#2d5aa3; }
+    footer { margin-top: 36px; font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="kicker">AURORA GRID · evidence layer</div>
+    <h1>RECORD LOCK</h1>
+    <p>Controlled publication for claims that have to be inspected. Every claim is tied to sources, opposing views, confidence, and what would change the conclusion.</p>
+
+    <div class="card">
+      <strong>What you can examine</strong>
+      <ul>
+        <li>Claim schemas and revision conditions</li>
+        <li>Source provenance and evidence classification</li>
+        <li>Counterarguments and falsifiers</li>
+        <li>Public reference data only — no private case files</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <strong>Working standard</strong>
+      <p>Separate facts from inference. State what is unproven. Do not treat model confidence as accuracy. AI may draft; publication stays human-owned.</p>
+    </div>
+
+    <div class="row">
+      <a class="btn primary" href="https://github.com/AuroraGrid/record-lock">Source on GitHub</a>
+      <a class="btn" href="https://hasan-research-systems.vercel.app/">Portfolio hub</a>
+      <a class="btn" href="https://ai-red-team-dashboard.vercel.app/">Red-Team Dashboard</a>
+    </div>
+
+    <footer>
+      Hasan Raza Kazmi · RECORD LOCK is the public reference version of the claim-verification architecture.
+    </footer>
+  </main>
+</body>
+</html>
