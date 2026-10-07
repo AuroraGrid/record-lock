@@ -47,11 +47,11 @@ It uses fictional example data so the design and structure can be examined witho
 ## Creator
 
 **Hasan Raza Kazmi**  
-AI Product Builder & Strategic Intelligence Analyst  
+Founder, KAHRELUM  
 Pakistan · Fully remote
 
-Email: Grindwireproject@gmail.com  
-Main portfolio: https://hasan-research-systems.vercel.app/
+Email: hasan@kahrelum.com  
+Canonical site: https://kahrelum.com
 
 ---
 
